@@ -1,4 +1,21 @@
-﻿@{
+﻿@*@{
+        ViewData["Title"] = "Home Page";
+    }
+
+    @model List<Bowler>
+
+    <h1>Bowlers</h1>
+
+    <ul>
+        @foreach (var b in Model)
+                {
+                    <li>@b.BowlerID</li>
+                    <li>@b.BowlerLastName</li>
+                }
+    </ul>*@
+
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -6,10 +23,43 @@
 
 <h1>Bowlers</h1>
 
+@*<div id="types" class="col-3">
+        @foreach (Team t in ViewBag.teams)
+                {
+                    <button>@t.TeamName</button>
+                }
+    </div>*@
+
 <ul>
     @foreach (var b in Model)
-            {
-                <li>@b.BowlerID</li>
-                <li>@b.BowlerLastName</li>
-            }
+    {
+
+        <div class="card text-left col-9">
+            <div class="card-body">
+                <h5 class="card-title">@b.BowlerLastName, @b.BowlerFirstName @b.BowlerMiddleInit </h5>
+                <p class="card-text">@b.BowlerAddress @b.BowlerCity, @b.BowlerState @b.BowlerZip</p>
+                <p class="card-text">@b.BowlerPhoneNumber</p>
+                @*<a href="#" class="btn btn-primary">Go somewhere</a>*@
+
+            <div class="text-right">
+                <td><a asp-controller="Home" asp-action="Edit" asp-route-bowlerid="@b.BowlerID">Edit</a></td>
+                <br />
+                <td><a asp-controller="Home" asp-action="Delete" asp-route-bowlerid="@b.BowlerID">Delete</a></td>
+
+            </div>
+                
+            </div>
+
+        </div>
+    }
 </ul>
+
+<td><a asp-controller="Home" asp-action="Create" class="btn btn-primary">Create a New Bowler</a></td>
+
+
+
+
+
+
+
+
