@@ -19,9 +19,13 @@ namespace bowling.Controllers
             _context = temp;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string TeamName)
         {
+            ViewBag.Teams = _context.Teams.ToList();
+         
+
             var blah = _context.Bowlers
+                .Where(x => x.Team.TeamName == TeamName || TeamName == null)
                 .Include(x => x.Team)
                 .ToList();
 
