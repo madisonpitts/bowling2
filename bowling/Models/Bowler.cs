@@ -11,7 +11,7 @@ namespace bowling.Models
 {
     public class Bowler
     {
-        
+
         [Required]
         [Key]
         public int BowlerID { get; set; }
@@ -33,6 +33,8 @@ namespace bowling.Models
         public string BowlerPhoneNumber { get; set; }
 
         public int TeamID { get; set; }
+        public Team Team { get; set; }
+
 
 
     }

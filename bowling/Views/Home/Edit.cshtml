@@ -20,44 +20,55 @@
 
     <div class="form-group">
         <label>Last Name:</label>
-        <input class="form-control text-success border border-primary bg-light" asp-for="BowlerLastName" />
+        <input class="form-control text-dark border border-primary bg-light" asp-for="BowlerLastName" />
     </div>
 
 
     <div class="form-group">
         <label>First Name:</label>
 
-        <input class="form-control text-success border border-primary bg-light" asp-for="BowlerFirstName">
+        <input class="form-control text-dark border border-primary bg-light" asp-for="BowlerFirstName">
     </div>
 
     <div class="form-group">
         <label>Middle Initial:</label>
-        <input class="form-control text-success border border-primary bg-light" asp-for="BowlerMiddleInit" />
+        <input class="form-control text-dark border border-primary bg-light" asp-for="BowlerMiddleInit" />
     </div>
 
     <div class="form-group">
         <label>Address:</label>
-        <input class="form-control text-success border border-primary bg-light" asp-for="BowlerAddress" />
+        <input class="form-control text-dark border border-primary bg-light" asp-for="BowlerAddress" />
     </div>
 
     <div class="form-group">
         <label>City:</label>
-        <input class="form-control text-success border border-primary bg-light" asp-for="BowlerCity" />
+        <input class="form-control text-dark border border-primary bg-light" asp-for="BowlerCity" />
     </div>
 
     <div class="form-group">
         <label>State Abbreviaton:</label>
-        <input class="form-control text-success border border-primary bg-light" asp-for="BowlerState" />
+        <input class="form-control text-dark border border-primary bg-light" asp-for="BowlerState" />
     </div>
 
     <div class="form-group">
         <label>Zip Code:</label>
-        <input class="form-control text-success border border-primary bg-light" asp-for="BowlerZip" />
+        <input class="form-control text-dark border border-primary bg-light" asp-for="BowlerZip" />
     </div>
 
     <div class="form-group">
         <label>Phone Number:</label>
-        <input class="form-control text-success border border-primary bg-light" asp-for="BowlerPhoneNumber" />
+        <input class="form-control text-dark border border-primary bg-light" asp-for="BowlerPhoneNumber" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TeamID">Team: </label>
+        <select asp-for="TeamID">
+            <option value="">Select a Team</option>
+            @foreach (Team t in ViewBag.Teams)
+            {
+                <option value="@t.TeamID">@t.TeamName</option>
+            }
+        </select><br />
     </div>
 
     <input type="hidden" asp-for="BowlerID" />

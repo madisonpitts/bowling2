@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using bowling.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace bowling.Controllers
 {
@@ -20,7 +21,9 @@ namespace bowling.Controllers
 
         public IActionResult Index()
         {
-            var blah = _context.Bowlers.ToList();
+            var blah = _context.Bowlers
+                .Include(x => x.Team)
+                .ToList();
 
             return View(blah);
         }
@@ -28,6 +31,8 @@ namespace bowling.Controllers
         [HttpGet]
         public IActionResult Add()
         {
+
+            ViewBag.Teams = _context.Teams.ToList();
             var x = new Bowler();
 
 
@@ -49,6 +54,7 @@ namespace bowling.Controllers
 
             else
             {
+                //ViewBag.Teams = _context.Teams.ToList();
                 return View();
             }
 
